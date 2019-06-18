@@ -113,7 +113,10 @@ var handleUserSelection = function (event) {
 //-------------------------------------------Compare to Last selection---------------------------------------
 
 var compare = function (leftProduct, middleProduct, rightProduct) {
-  for (var j = 0; j < previousProducts.length; j++); {
+  console.log(previousProducts);
+
+  for (var j = 0; j < previousProducts.length; j++) {
+    console.log (leftProduct, previousProducts[j]);
     if (leftProduct === previousProducts[j]) {
       return false;
     } if (middleProduct === previousProducts[j]) {
@@ -123,7 +126,6 @@ var compare = function (leftProduct, middleProduct, rightProduct) {
     }
   } return true;
 };
-console.log ('boolean of compare function: ' + compare());
 
 
 //-------------------------------------------Render List of Results---------------------------------------------
@@ -148,5 +150,6 @@ var renderResults = function () {
 imageSelector.addEventListener('click', handleUserSelection);
 
 displayNewProducts();
-
+compare();
 //DOM manipulation to add
+// console.log ('boolean of compare function: ' + compare());
