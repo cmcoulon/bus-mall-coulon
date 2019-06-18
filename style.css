@@ -1,0 +1,83 @@
+/*------------------------------------Document Level Properties----------------------------------*/
+main {
+  width: 800px;
+  margin: auto;
+}
+
+aside {
+  float: left;
+  width: 180px;
+}
+
+/*------------------------------------------Image Selector----------------------------------------*/
+
+header {
+  height: 100px;
+  overflow: auto;
+  width: 100%;
+  margin-bottom: 25px;
+  background-color: greenyellow;
+  vertical-align: bottom;
+}
+
+header > ul {
+  float: left;
+  margin-top: 50px;
+}
+
+header > ul > li {
+  float: right;
+  margin-right: 20px;
+}
+
+#pageTitle {
+  font-family: 'Dancing Script', cursive;
+  font-size: 42px;
+}
+
+nav > ul > li {
+  float: left;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+nav > ul {
+  float: right;
+  margin-top: 60px;
+}
+
+/*------------------------------------------Image Selector----------------------------------------*/
+
+#imageSelector {
+  margin-bottom: 35px;
+}
+
+#imageLeft {
+  width: 250px;
+  height: 250px;
+  margin-right: 15px;
+}
+
+#imageMiddle {
+  width: 250px;
+  height: 250px;
+  margin-right: 15px;
+}
+
+#imageRight {
+  width: 250px;
+  height: 250px;
+}
+
+/*------------------------------------------Welcom and Instructions----------------------------------------*/
+#welcomeAndInstructions h2 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------Results Table-------------------------------------------*/
+
+#results {
+  line-height: 20px;
+}
