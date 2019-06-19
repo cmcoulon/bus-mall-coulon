@@ -24,9 +24,9 @@ var ImageObject = function (name, path) {
 
 //-----------------------------------------------Image Objects------------------------------------------------
 
-new ImageObject ('bag', '/imgs/bag.jpg');
-new ImageObject ('banana', '/imgs/banana.jpg');
-new ImageObject ('bathroom', '/imgs/bathroom.jpg');
+new ImageObject ('Bag', '/imgs/bag.jpg');
+new ImageObject ('Banana', '/imgs/banana.jpg');
+new ImageObject ('Bathroom', '/imgs/bathroom.jpg');
 new ImageObject ('Boots', '/imgs/boots.jpg');
 new ImageObject ('Breakfast', '/imgs/breakfast.jpg');
 new ImageObject ('Bubblegum', '/imgs/bubblegum.jpg');
@@ -63,9 +63,7 @@ var displayNewProducts = function () {
     leftProductImage = arrayOfImageObjects[leftProduct];
     middleProductImage = arrayOfImageObjects[middleProduct];
     rightProductImage = arrayOfImageObjects[rightProduct];
-    // debugger;
   } while (compare(leftProduct, middleProduct, rightProduct) === false);
-  // debugger;
   previousProducts = [];
   renderNewProducts (leftProduct, middleProduct, rightProduct);
   previousProducts.push(leftProduct, middleProduct, rightProduct);
@@ -106,6 +104,7 @@ var handleUserSelection = function (event) {
   }
   if (totalClicks === 25) {
     renderResults();
+    displayChart();
     imageSelector.removeEventListener('click', handleUserSelection);
   }
 };
@@ -113,10 +112,8 @@ var handleUserSelection = function (event) {
 //-------------------------------------------Compare to Last selection---------------------------------------
 
 var compare = function (leftProduct, middleProduct, rightProduct) {
-  console.log(previousProducts);
 
   for (var j = 0; j < previousProducts.length; j++) {
-    console.log (leftProduct, previousProducts[j]);
     if (leftProduct === previousProducts[j]) {
       return false;
     } if (middleProduct === previousProducts[j]) {
@@ -140,16 +137,68 @@ var renderResults = function () {
     productPercent = Math.round(productPercent * 100);
 
     var liEl =document.createElement('li');
-    liEl.textContent = productName + ': selected ' + productPercent + '%.';
+    liEl.textContent = productName + ': selected ' + productPercent + '% of ' + productShows + ' times shown';
     ulEl.appendChild(liEl);
   }
   resultsList.appendChild(ulEl);
 };
 
+//---------------------------------------------Chart of Results-------------------------------------------------
+function displayChart () {
+  var productNames = [];
+  var productPercent = [];
+  var productColors = [];
+  function chartData () {
+    for (var k = 0; k < arrayOfImageObjects.length; k++) {
+      productNames.push(arrayOfImageObjects[k].name);
+      productPercent.push(Math.round((arrayOfImageObjects[k].timesClicked / arrayOfImageObjects[k].timesShown) * 100));
+      productColors.push(random_rgba(.5));
+    }
+  }
+
+  //base script for this function was found at: https://stackoverflow.com/questions/23095637/how-do-you-get-random-rgb-in-javascript
+  console.log(productColors);
+  function random_rgba(a) {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + a + ')';
+  }
+
+  chartData();
+  var ctx = document.getElementById('resultsChartCanvas').getContext('2d');
+  var resultsChartCanvas = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: productNames,
+      datasets: [{
+        label: '# of Votes',
+        data: productPercent,
+        backgroundColor: productColors,
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+//--------------------------------------Initial Page Rendering Items--------------------------------------------
+
 
 imageSelector.addEventListener('click', handleUserSelection);
 
 displayNewProducts();
-compare();
-//DOM manipulation to add
-// console.log ('boolean of compare function: ' + compare());

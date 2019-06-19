@@ -12,7 +12,7 @@
 <body>
   <header>
     <ul id = logoAndTitle>
-      <li></li><img id = "logo" src = "#" /></li>
+      <li><img id = "logo" src = "imgs/BusLogo.jpg" /></li>
       <li id = "pageTitle">Bus Mall</li>
     </ul>
     <nav>
@@ -38,11 +38,14 @@
       <h2>Welcom to Our Product Test Page</h2>
       <p>You have been specially selected to take part in our new product selection process.  You will be asked to select one of several products that appeal most to you compared to the other products displayed at the same time. The survey will run 25 times and at the end you will have an opportunity to see what products were most popular.  Thank you for your participation.</p>
     </section>
+    <section id = "resultsChart">
+      <canvas id = "resultsChartCanvas" width = "400px" height = "400px"></canvas>
+    </section>
   </main>
   <footer>
 
   </footer>
-  
+  <script src = "https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
   <script src = "./app.js"></script>
 </body>
 </html>
