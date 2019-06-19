@@ -23,7 +23,7 @@ header > ul {
 }
 
 header > ul > li {
-  float: right;
+  float: left;
   margin-right: 20px;
   background-color: inherit;
 }
