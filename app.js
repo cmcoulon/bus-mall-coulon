@@ -98,6 +98,8 @@ var handleUserSelection = function (event) {
       middleProductImage.timesShown++;
       rightProductImage.timesShown++;
       totalClicks++;
+      var totalClicksStorageString = JSON.stringify(totalClicks);
+      localStorage.setItem ('Total Clicks', totalClicksStorageString);
 
       displayNewProducts();
     }
@@ -105,6 +107,11 @@ var handleUserSelection = function (event) {
   if (totalClicks === 25) {
     renderResults();
     displayChart();
+
+    //Save results to local storage
+    addToLocalStorage('Array of Image Objects', arrayOfImageObjects);
+
+
     imageSelector.removeEventListener('click', handleUserSelection);
   }
 };
@@ -124,6 +131,12 @@ var compare = function (leftProduct, middleProduct, rightProduct) {
   } return true;
 };
 
+//-------------------------------------------Add Data to Local Storage-----------------------------------------
+
+function addToLocalStorage (keyName, item) {
+  var itemConvertedToString = JSON.stringify(item);
+  localStorage.setItem (keyName, itemConvertedToString);
+}
 
 //-------------------------------------------Render List of Results---------------------------------------------
 
