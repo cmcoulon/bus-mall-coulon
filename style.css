@@ -1,15 +1,10 @@
 /*------------------------------------Document Level Properties----------------------------------*/
+
 main {
   width: 800px;
   margin: auto;
 }
-
-aside {
-  float: left;
-  width: 180px;
-}
-
-/*------------------------------------------Image Selector----------------------------------------*/
+/*------------------------------------------------Header------------------------------------------------*/
 
 header {
   height: 100px;
@@ -22,28 +17,43 @@ header {
 
 header > ul {
   float: left;
-  margin-top: 50px;
+  margin-top: 10px;
+  margin-left: 25px;
+  background-color: inherit;
 }
 
 header > ul > li {
   float: right;
   margin-right: 20px;
+  background-color: inherit;
+}
+
+#logo {
+  width: 75px;
+  height: 75px;
 }
 
 #pageTitle {
   font-family: 'Dancing Script', cursive;
   font-size: 42px;
+  margin-top: 30px;
+}
+
+nav {
+  background-color: inherit;
 }
 
 nav > ul > li {
   float: left;
   margin-right: 20px;
   font-size: 20px;
+  background-color: inherit;
 }
 
 nav > ul {
   float: right;
   margin-top: 60px;
+  background-color: inherit;
 }
 
 /*------------------------------------------Image Selector----------------------------------------*/
@@ -69,15 +79,39 @@ nav > ul {
   height: 250px;
 }
 
-/*------------------------------------------Welcom and Instructions----------------------------------------*/
+/*------------------------------------------Welcome and Instructions----------------------------------------*/
 #welcomeAndInstructions h2 {
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 20px;
 }
 
+#welcomeAndInstructions p {
+  margin-bottom: 25px;
+}
+
 /*------------------------------------------Results Table-------------------------------------------*/
 
 #results {
   line-height: 20px;
+  font-size: 1em;
+  background-color: rgba(95, 218, 70, 0.856);
+  margin-right: 25px;
+}
+
+aside > ul > li{
+  background-color: white;
+}
+
+aside {
+  float: left;
+  width: 307px;
+  background-color: white;
+}
+
+/*------------------------------------------Results Chart-------------------------------------------*/
+#resultsChart {
+  width: 600px;
+  height: 600px;
+  margin: auto;
 }
